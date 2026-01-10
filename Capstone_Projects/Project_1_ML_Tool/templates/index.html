@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ML Tool - Capstone Project 1</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Machine Learning Generator Tool</h1>
+        
+        <div class="section">
+            <h2>1. Upload Data (CSV)</h2>
+            <textarea id="csvInput" placeholder="Paste your CSV content here... (e.g., Age,Salary,Purchased\n25,50000,0\n30,60000,1)"></textarea>
+            <p class="note">Ensure the first row is headers. Use comma as separator.</p>
+        </div>
+
+        <div class="section">
+            <h2>2. Configure Parameters</h2>
+            <div class="form-group">
+                <label>Target Column Name:</label>
+                <input type="text" id="targetCol" placeholder="e.g., Purchased">
+            </div>
+            
+            <div class="form-group">
+                <label>Select Algorithm:</label>
+                <select id="modelType">
+                    <option value="linear_regression">Linear Regression</option>
+                    <option value="logistic_regression">Logistic Regression</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label>Test Split Size (0.1 - 0.9):</label>
+                <input type="number" id="testSize" value="0.2" step="0.1" min="0.1" max="0.9">
+            </div>
+
+            <button onclick="trainModel()" id="trainBtn">Train Model</button>
+        </div>
+
+        <div class="section" id="resultsSection" style="display: none;">
+            <h2>3. Training Results</h2>
+            <div id="output"></div>
+        </div>
+        
+        <div class="section" id="predictSection" style="display: none;">
+            <h2>4. Make Prediction</h2>
+            <p>Enter feature values in order (comma separated):</p>
+            <input type="text" id="featureInput" placeholder="e.g., 45, 75000">
+            <button onclick="predict()">Predict</button>
+            <div id="predictionResult"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

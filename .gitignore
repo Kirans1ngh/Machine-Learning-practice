@@ -1,0 +1,9 @@
+# Datasets
+land_cover.csv
+diabetes.csv
+iris.csv
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
